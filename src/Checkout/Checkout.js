@@ -30,6 +30,11 @@ function Checkout() {
         ))}
       </div>
       <div className="checkout__right">
+        <img
+          className="subtotal__logo"
+          src="https://images-eu.ssl-images-amazon.com/images/G/31/checkout/assets/TM_desktop._CB443006202_.png"
+          alt=""
+        />
         <Subtotal />
       </div>
     </div>

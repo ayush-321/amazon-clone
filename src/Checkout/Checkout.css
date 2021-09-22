@@ -15,3 +15,14 @@
   padding: 10px;
   border-bottom: 1px solid lightgray;
 }
+
+.subtotal__logo {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 340px;
+  height: 50px;
+  margin-bottom: 10px;
+  border: 1px solid #dddddd;
+  border-radius: 3px;
+}
