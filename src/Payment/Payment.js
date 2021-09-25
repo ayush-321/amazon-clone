@@ -1,86 +1,53 @@
-import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
-import axios from "./axios";
-import React, { useEffect, useState } from "react";
+import React from "react";
+<<<<<<< HEAD
+<<<<<<< HEAD
 import CurrencyFormat from "react-currency-format";
 import { Link, useHistory } from "react-router-dom";
 import CheckoutProduct from "../Checkout/CheckoutProduct";
+import { db } from "../firebase";
 import { getBasketTotal } from "../React Context API/reducer";
+=======
+import { Link } from "react-router-dom";
+import CheckoutProduct from "../Checkout/CheckoutProduct";
+>>>>>>> parent of a6564ef (Added Wishlist Feature, Integrated Stripe payment, Added Order Confirmation Component)
+=======
+import { Link } from "react-router-dom";
+import CheckoutProduct from "../Checkout/CheckoutProduct";
+>>>>>>> parent of a6564ef (Added Wishlist Feature, Integrated Stripe payment, Added Order Confirmation Component)
 import { useStateValue } from "../React Context API/StateProvider";
 import "./Payment.css";
-import { db } from "../firebase";
 
 function Payment() {
+<<<<<<< HEAD
+<<<<<<< HEAD
   const [{ basket, user, address }, dispatch] = useStateValue();
 
   const history = useHistory();
 
-  const stripe = useStripe();
-  const elements = useElements();
-
-  const [succeeded, setSucceeded] = useState(false);
-  const [processing, setProcessing] = useState("");
-
-  const [error, setError] = useState(null);
-  const [disabled, setDisabled] = useState(true);
-  const [clientSecret, setClientSecret] = useState(true);
-
-  // Whenever the basket changes it will make this request and it will update the special stripe secret which allows us to charge the customer correct amount.
-  useEffect(() => {
-    // generate the special stripe secret which allows us to charge a customer
-    const getClientSecret = async () => {
-      const response = await axios({
-        method: "post",
-        // Stripe expects the total in a currencies subunits
-        url: `/payments/create?total=${getBasketTotal(basket) * 100}`,
-      });
-      setClientSecret(response.data.clientSecret);
-    };
-
-    getClientSecret();
-  }, [basket]);
-
-  console.log("Secret is >>>", clientSecret);
-  console.log("user", user);
-
   const handleSubmit = async (event) => {
     event.preventDefault();
-    setProcessing(true);
 
-    const payload = await stripe
-      .confirmCardPayment(clientSecret, {
-        payment_method: {
-          card: elements.getElement(CardElement),
-        },
-      })
-      .then(({ paymentIntent }) => {
-        //paymentIntent = payment confirmation
-
-        db.collection("users")
-          .doc(user?.uid)
-          .collection("orders")
-          .doc(paymentIntent.id)
-          .set({
-            basket: basket,
-            amount: paymentIntent.amount,
-            created: paymentIntent.created,
-          });
-
-        setSucceeded(true);
-        setError(null);
-        setProcessing(false);
-
-        dispatch({
-          type: "EMPTY_BASKET",
-        });
-
-        history.replace("/orders");
+    db.collection("users")
+      .doc(user?.uid)
+      .set({
+        basket: basket,
+        amount: getBasketTotal(basket),
       });
+
+    dispatch({
+      type: "EMPTY_BASKET",
+    });
+
+    history.replace("/orders");
   };
 
-  const handleChange = (event) => {
-    setDisabled(event.empty);
-    setError(event.error ? event.error.message : "");
-  };
+  const handleBuy = () => {};
+=======
+  const [{ basket, user }, dispatch] = useStateValue();
+>>>>>>> parent of a6564ef (Added Wishlist Feature, Integrated Stripe payment, Added Order Confirmation Component)
+=======
+  const [{ basket, user }, dispatch] = useStateValue();
+>>>>>>> parent of a6564ef (Added Wishlist Feature, Integrated Stripe payment, Added Order Confirmation Component)
 
   return (
     <div className="payment">
@@ -95,7 +62,8 @@ function Payment() {
           </div>
           <div className="payment__address">
             <p>{user?.email}</p>
-            <p>{address}</p>
+            <p>123 React Lane</p>
+            <p>Bangalore, India</p>
           </div>
         </div>
 
@@ -121,9 +89,10 @@ function Payment() {
           <div className="payment__title">
             <h3>Payment Method</h3>
           </div>
+<<<<<<< HEAD
+<<<<<<< HEAD
           <div className="payment__details">
             <form onSubmit={handleSubmit}>
-              <CardElement onChange={handleChange} />
               <div className="payment__priceContainer">
                 <CurrencyFormat
                   renderText={(value) => (
@@ -137,13 +106,16 @@ function Payment() {
                   thousandSeparator={true}
                   prefix={"₹"}
                 />
-                <button disabled={processing || disabled || succeeded}>
-                  <span>{processing ? <p>Processing</p> : "Buy Now"}</span>
-                </button>
+                <button onClick={handleBuy}>Buy Now</button>
               </div>
-              {error && <div>{error}</div>}
             </form>
           </div>
+=======
+          <div className="payment__details"></div>
+>>>>>>> parent of a6564ef (Added Wishlist Feature, Integrated Stripe payment, Added Order Confirmation Component)
+=======
+          <div className="payment__details"></div>
+>>>>>>> parent of a6564ef (Added Wishlist Feature, Integrated Stripe payment, Added Order Confirmation Component)
         </div>
       </div>
     </div>

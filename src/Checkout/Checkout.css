@@ -10,40 +10,6 @@
   margin-bottom: 10px;
 }
 
-.checkout__address {
-  justify-content: space-between;
-  width: 300px;
-  height: 50px;
-  padding: 20px;
-  background-color: #f3f3f3;
-  border: 1px solid #dddddd;
-  border-radius: 3px;
-  margin-bottom: 10px;
-  align-items: center;
-}
-
-.checkout__address > h3 {
-  font-weight: 600;
-  margin-bottom: 5px;
-}
-
-.checkout__addressInput {
-  width: 70%;
-  height: 20px;
-  border: 1px solid lightgray;
-  outline-width: 0;
-}
-
-.checkout__address > button {
-  margin-left: 10px;
-  height: 24px;
-  background: #f0c14b;
-  border-radius: 2px;
-  border: 1px solid;
-  border-color: #a88734 #9c7e31 #846a29;
-  color: #111;
-}
-
 .checkout__title {
   margin-right: 10px;
   padding: 10px;
