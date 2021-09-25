@@ -1,13 +1,19 @@
 import React from "react";
+<<<<<<< HEAD
 import CurrencyFormat from "react-currency-format";
 import { Link, useHistory } from "react-router-dom";
 import CheckoutProduct from "../Checkout/CheckoutProduct";
 import { db } from "../firebase";
 import { getBasketTotal } from "../React Context API/reducer";
+=======
+import { Link } from "react-router-dom";
+import CheckoutProduct from "../Checkout/CheckoutProduct";
+>>>>>>> parent of a6564ef (Added Wishlist Feature, Integrated Stripe payment, Added Order Confirmation Component)
 import { useStateValue } from "../React Context API/StateProvider";
 import "./Payment.css";
 
 function Payment() {
+<<<<<<< HEAD
   const [{ basket, user, address }, dispatch] = useStateValue();
 
   const history = useHistory();
@@ -30,6 +36,9 @@ function Payment() {
   };
 
   const handleBuy = () => {};
+=======
+  const [{ basket, user }, dispatch] = useStateValue();
+>>>>>>> parent of a6564ef (Added Wishlist Feature, Integrated Stripe payment, Added Order Confirmation Component)
 
   return (
     <div className="payment">
@@ -44,7 +53,8 @@ function Payment() {
           </div>
           <div className="payment__address">
             <p>{user?.email}</p>
-            <p>{address}</p>
+            <p>123 React Lane</p>
+            <p>Bangalore, India</p>
           </div>
         </div>
 
@@ -70,6 +80,7 @@ function Payment() {
           <div className="payment__title">
             <h3>Payment Method</h3>
           </div>
+<<<<<<< HEAD
           <div className="payment__details">
             <form onSubmit={handleSubmit}>
               <div className="payment__priceContainer">
@@ -89,6 +100,9 @@ function Payment() {
               </div>
             </form>
           </div>
+=======
+          <div className="payment__details"></div>
+>>>>>>> parent of a6564ef (Added Wishlist Feature, Integrated Stripe payment, Added Order Confirmation Component)
         </div>
       </div>
     </div>

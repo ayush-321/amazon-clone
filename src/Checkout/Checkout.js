@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useStateValue } from "../React Context API/StateProvider";
 import "./Checkout.css";
 import CheckoutProduct from "./CheckoutProduct";
@@ -6,19 +6,6 @@ import Subtotal from "./Subtotal";
 
 function Checkout() {
   const [{ basket, user }, dipatch] = useStateValue();
-  const [address, setAddress] = useState("");
-
-  const handleAddressSubmit = (e) => {
-    e.preventDefault();
-
-    dipatch({
-      type: "SET_ADDRESS",
-      address: address,
-    });
-
-    setAddress("");
-  };
-
   return (
     <div className="checkout">
       <div className="checkout__left">
@@ -49,17 +36,6 @@ function Checkout() {
           src="https://images-eu.ssl-images-amazon.com/images/G/31/checkout/assets/TM_desktop._CB443006202_.png"
           alt=""
         />
-
-        <div className="checkout__address">
-          <h3>Enter your Address:</h3>
-          <input
-            className="checkout__addressInput"
-            value={address}
-            onChange={(e) => setAddress(e.target.value)}
-          />
-          <button onClick={handleAddressSubmit}>Submit</button>
-        </div>
-
         <Subtotal />
       </div>
     </div>

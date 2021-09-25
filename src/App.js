@@ -8,8 +8,11 @@ import { useEffect } from "react";
 import { auth } from "./firebase";
 import { useStateValue } from "./React Context API/StateProvider";
 import Payment from "./Payment/Payment";
+<<<<<<< HEAD
 import Orders from "./Orders/Orders";
 import Wishlists from "./Wishlist/Wishlists";
+=======
+>>>>>>> parent of a6564ef (Added Wishlist Feature, Integrated Stripe payment, Added Order Confirmation Component)
 
 function App() {
   const [{}, dispatch] = useStateValue();
@@ -36,14 +39,6 @@ function App() {
     <Router>
       <div className="app">
         <Switch>
-          <Route path="/wishlist">
-            <Header />
-            <Wishlists />
-          </Route>
-          <Route path="/orders">
-            <Header />
-            <Orders />
-          </Route>
           <Route path="/login">
             <Login />
           </Route>
