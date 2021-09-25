@@ -8,7 +8,7 @@ function Order({ order }) {
   return (
     <div className="order">
       <h2>Order</h2>
-      <p>{}</p>
+      <p>{moment.unix(order.data.created).format("MMMM Do YYYY, h:mma")}</p>
       <p className="order__id">
         <small>{order.id}</small>
       </p>
@@ -19,6 +19,7 @@ function Order({ order }) {
           image={item.image}
           price={item.price}
           rating={item.rating}
+          hideButton
         />
       ))}
       <CurrencyFormat
@@ -26,7 +27,7 @@ function Order({ order }) {
           <h3 className="order__total">Order Total: {value}</h3>
         )}
         decimalScale={2}
-        value={order.data.amount}
+        value={order.data.amount / 100}
         displayType={"text"}
         thousandSeparator={true}
         prefix={"₹"}

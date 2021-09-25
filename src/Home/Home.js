@@ -14,12 +14,14 @@ function Home() {
 
         <div className="home__row">
           <Product
+            id="12321341"
             title="Echo Dot (4th Gen, 2020 release)| #1 smart speaker brand in India with Alexa (Black)"
             price={4499.99}
             rating={5}
             image="https://m.media-amazon.com/images/I/61KIy6gX-CL._SL1000_.jpg"
           />
           <Product
+            id="49538094"
             title="ROG Strix GA35, AMD Ryzen 7-3700X Gaming Desktop  NVIDIA GeForce RTX 2070 "
             price={159990.0}
             rating={4}
@@ -29,18 +31,21 @@ function Home() {
 
         <div className="home__row">
           <Product
+            id="5478965"
             title="Amazon Brand - Solimo XXXL Bean Bag Cover (Black with Pink Piping)"
             price={929.5}
             rating={4}
             image="https://m.media-amazon.com/images/I/91PjQLbk8vL._SL1500_.jpg"
           />
           <Product
+            id="4903850"
             title="The Lean Startup: How Constant Innovation Creates Radically Successful Businesses"
             price={478.0}
             rating={5}
             image="https://images-eu.ssl-images-amazon.com/images/I/51aEhyjQGrL._SY264_BO1,204,203,200_QL40_FMwebp_.jpg"
           />
           <Product
+            id="23445930"
             title="PowerMax Fitness TDM-100M (2.0HP) Motorized Foldable Electric Treadmill (Black)"
             price={31049.0}
             rating={5}
@@ -50,6 +55,7 @@ function Home() {
 
         <div className="home__row">
           <Product
+            id="3254354345"
             title="Samsung 34-inch (86.40cm) Curved Monitor- 21:9 Ultrawide QLED, Thunderbolt 3 Port- LC34J791WTWXXL"
             price={69999.99}
             rating={4}

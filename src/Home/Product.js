@@ -1,12 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 import { useStateValue } from "../React Context API/StateProvider";
 import "./Product.css";
+import BookmarksOutlinedIcon from "@material-ui/icons/BookmarksOutlined";
 
 function Product({ id, title, image, price, rating }) {
-  const [{ basket }, dipatch] = useStateValue();
+  const [{ basket }, dispatch] = useStateValue();
+
+  const handleWishlist = (e) => {
+    e.preventDefault();
+
+    dispatch({
+      type: "ADD_TO_WISHLIST",
+      wishlist: {
+        id: id,
+        title: title,
+        image: image,
+        price: price,
+        rating: rating,
+      },
+    });
+  };
 
   const addToBasket = () => {
-    dipatch({
+    dispatch({
       type: "ADD_TO_BASKET",
       item: {
         id: id,
@@ -37,7 +53,14 @@ function Product({ id, title, image, price, rating }) {
 
       <img src={image} alt="" />
 
-      <button onClick={addToBasket}>Add to Basket</button>
+      <div className="product__buttons">
+        <button onClick={addToBasket}>Add to Basket</button>
+        <BookmarksOutlinedIcon
+          onClick={handleWishlist}
+          fontSize="small"
+          className="product__wishlist"
+        />
+      </div>
     </div>
   );
 }

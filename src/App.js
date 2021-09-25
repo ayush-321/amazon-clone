@@ -8,14 +8,14 @@ import { useEffect } from "react";
 import { auth } from "./firebase";
 import { useStateValue } from "./React Context API/StateProvider";
 import Payment from "./Payment/Payment";
-<<<<<<< HEAD
-<<<<<<< HEAD
+import { loadStripe } from "@stripe/stripe-js";
+import { Elements } from "@stripe/react-stripe-js";
 import Orders from "./Orders/Orders";
 import Wishlists from "./Wishlist/Wishlists";
-=======
->>>>>>> parent of a6564ef (Added Wishlist Feature, Integrated Stripe payment, Added Order Confirmation Component)
-=======
->>>>>>> parent of a6564ef (Added Wishlist Feature, Integrated Stripe payment, Added Order Confirmation Component)
+
+const promise = loadStripe(
+  "pk_test_51JcmTfSAzqGzxRz8wJoYKkicx23yswPUSsdo0JvyAEaSJef4GoB5FQJV8mW3SiVyPqKbUp7le7P1GY0HwqCf25zm00vmSRVVl6"
+);
 
 function App() {
   const [{}, dispatch] = useStateValue();
@@ -42,6 +42,14 @@ function App() {
     <Router>
       <div className="app">
         <Switch>
+          <Route path="/wishlist">
+            <Header />
+            <Wishlists />
+          </Route>
+          <Route path="/orders">
+            <Header />
+            <Orders />
+          </Route>
           <Route path="/login">
             <Login />
           </Route>
@@ -51,7 +59,9 @@ function App() {
           </Route>
           <Route path="/payment">
             <Header />
-            <Payment />
+            <Elements stripe={promise}>
+              <Payment />
+            </Elements>
           </Route>
           <Route path="/">
             <Header />
